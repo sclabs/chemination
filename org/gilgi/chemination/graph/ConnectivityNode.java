@@ -14,4 +14,5 @@ public class ConnectivityNode extends Node {
 	public Atom getAtom() {
 		return atom;
 	}
+	
 }

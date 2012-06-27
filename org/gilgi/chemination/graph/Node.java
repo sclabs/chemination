@@ -26,4 +26,5 @@ public class Node {
 	public boolean hasNeighbor(Node n) {
 		return neighbors.contains(n);
 	}
+	
 }
