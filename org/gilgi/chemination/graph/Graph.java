@@ -5,17 +5,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+import org.gilgi.chemination.Atom;
+
 public class Graph<N extends Node> {
 
-	// this is the only reference into the graph so be careful with it
 	private N active;
 
-	public Graph(Factory<N> f) {
-		active = f.create();
-	}
-
-	// private constructor only used for separate()
-	private Graph(N n) {
+	public Graph(N n) {
 		active = n;
 	}
 
