@@ -13,7 +13,6 @@ public class Graph<N extends Node> {
 		active = n;
 	}
 
-	// override this
 	public N getActive() {
 		return active;
 	}
@@ -35,7 +34,6 @@ public class Graph<N extends Node> {
 	}
 
 	// you keep the active side of the cut, other side is returned as a graph
-	// override this
 	public Graph<N> separate(N n) {
 		if (contains(n)) {
 			Graph<N> newGraph = new Graph<N>(n);
@@ -48,7 +46,6 @@ public class Graph<N extends Node> {
 		return null;
 	}
 
-	// override this
 	public void setActive(N n) {
 		if (contains(n)) {
 			active = n;
@@ -79,6 +76,14 @@ public class Graph<N extends Node> {
 			}
 		}
 		return false;
+	}
+	
+	public int numBonds(N n) {
+		int count = 0;
+		for (N m : (List<N>) n.getNeighbors()) {
+			if (m.equals(n)) count++;
+		}
+		return count;
 	}
 	
 }

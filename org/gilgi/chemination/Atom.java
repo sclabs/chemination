@@ -6,7 +6,7 @@ public class Atom {
 	public final double electronegativity;
 	public final double atomicRadius;
 	public final int valenceElectrons;
-
+	
 	public Atom(int atomicNumber, double electronegativity,
 			double atomicRadius, int valenceElectrons) {
 
@@ -21,6 +21,7 @@ public class Atom {
 		this.electronegativity = electronegativity;
 		this.atomicRadius = atomicRadius;
 
+		// calculate valence electrons
 		if (atomicNumber > 0 && atomicNumber <= 2) {
 			valenceElectrons = atomicNumber;
 		} else if (atomicNumber <= 18) {

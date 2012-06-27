@@ -26,6 +26,7 @@ public class Sandbox {
 		System.out.println(c.getActive().getAtom().atomicNumber);
 		System.out.println(c.contains(secondCNode));
 		c.setActive(c.getNeighbors().get(0));
+		System.out.println(c.getNeighbors().get(0).getAtom().atomicNumber);
 		System.out.println(c.getActive().getAtom().atomicNumber);
 		System.out.println(c.contains(firstCNode));
 		System.out.println(c.getActive().equals(firstCNode));
