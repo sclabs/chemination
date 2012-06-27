@@ -5,8 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import org.gilgi.chemination.Atom;
-
 public class Graph<N extends Node> {
 
 	private N active;
@@ -38,9 +36,9 @@ public class Graph<N extends Node> {
 
 	// you keep the active side of the cut, other side is returned as a graph
 	// override this
-	public Graph separate(N n) {
+	public Graph<N> separate(N n) {
 		if (contains(n)) {
-			Graph newGraph = new Graph(n);
+			Graph<N> newGraph = new Graph<N>(n);
 			// cut old graph active side
 			cut(n);
 			// cut new graph n side
