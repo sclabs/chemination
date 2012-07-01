@@ -1,11 +1,11 @@
-package org.gilgi.chemination.graph;
+package org.gilgi.graph;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class Graph<N extends Node> {
+public class Graph<N extends Node<N>> {
 
 	private N active;
 
@@ -13,13 +13,12 @@ public class Graph<N extends Node> {
 		active = n;
 	}
 
-	// override this
 	public N getActive() {
 		return active;
 	}
 
 	public List<N> getNeighbors() {
-		return (List<N>) active.getNeighbors();
+		return active.getNeighbors();
 	}
 
 	// adds to active node
@@ -35,7 +34,6 @@ public class Graph<N extends Node> {
 	}
 
 	// you keep the active side of the cut, other side is returned as a graph
-	// override this
 	public Graph<N> separate(N n) {
 		if (contains(n)) {
 			Graph<N> newGraph = new Graph<N>(n);
@@ -48,7 +46,6 @@ public class Graph<N extends Node> {
 		return null;
 	}
 
-	// override this
 	public void setActive(N n) {
 		if (contains(n)) {
 			active = n;
@@ -69,7 +66,7 @@ public class Graph<N extends Node> {
 		seen.add(origin);
 		while (!queue.isEmpty()) {
 			N next = queue.remove();
-			for (N m : (List<N>) next.getNeighbors()) {
+			for (N m : next.getNeighbors()) {
 				if (m.equals(n))
 					return true;
 				if (!seen.contains(m)) {
