@@ -78,12 +78,4 @@ public class Graph<N extends Node<N>> {
 		return false;
 	}
 	
-	public int numBonds(N n) {
-		int count = 0;
-		for (N m : (List<N>) n.getNeighbors()) {
-			if (m.equals(n)) count++;
-		}
-		return count;
-	}
-	
 }
