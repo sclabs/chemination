@@ -1,5 +1,6 @@
 package org.gilgi.chemination.graph;
 
+import org.gilgi.chemination.core.Atom;
 import org.gilgi.graph.Graph;
 
 public class MoleculeGraph extends Graph<AtomNode> {
@@ -19,6 +20,10 @@ public class MoleculeGraph extends Graph<AtomNode> {
 	
 	public int numBonds() {
 		return getActive().getBonds();
+	}
+	
+	public Atom getAtom() {
+		return getActive().getAtom();
 	}
 
 }
