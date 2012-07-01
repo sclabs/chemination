@@ -1,21 +1,24 @@
 package org.gilgi.chemination.graph;
 
 import org.gilgi.graph.Graph;
-import org.gilgi.graph.Node;
 
-public class MoleculeGraph<N extends Node<N>> extends Graph<N> {
+public class MoleculeGraph extends Graph<AtomNode> {
 
-	public MoleculeGraph(N n) {
+	public MoleculeGraph(AtomNode n) {
 		super(n);
 	}
 
-	public int numBonds(N n) {
+	public int numBonds(AtomNode n) {
 		int count = 0;
-		for (N m : n.getNeighbors()) {
+		for (AtomNode m : n.getNeighbors()) {
 			if (m.equals(n))
 				count++;
 		}
 		return count;
+	}
+	
+	public int numBonds() {
+		return getActive().getBonds();
 	}
 
 }
