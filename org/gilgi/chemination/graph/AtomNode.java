@@ -93,7 +93,7 @@ public class AtomNode implements Node<AtomNode> {
 	}
 	
 	public int getGeometry() {
-		return 0;
+		return getUniqueNeighbors().size() + lonePairs + radicals;
 	}
 	
 	public List<AtomNode> getUniqueNeighbors() {
