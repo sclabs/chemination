@@ -1,11 +1,12 @@
 package org.gilgi.graph;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class Graph<N extends Node<N>> {
+public class Graph<N extends Node<N>> implements Iterable<N> {
 
 	private N active;
 
@@ -76,6 +77,24 @@ public class Graph<N extends Node<N>> {
 			}
 		}
 		return false;
+	}
+
+	// bfs for a list of all the nodes, then return its iterator
+	public Iterator<N> iterator() {
+		Queue<N> queue = new LinkedList<N>();
+		queue.add(active);
+		List<N> seen = new ArrayList<N>();
+		seen.add(active);
+		while (!queue.isEmpty()) {
+			N next = queue.remove();
+			for (N n : next.getNeighbors()) {
+				if (!seen.contains(n)) {
+					queue.add(n);
+					seen.add(n);
+				}
+			}
+		}
+		return seen.iterator();
 	}
 	
 }

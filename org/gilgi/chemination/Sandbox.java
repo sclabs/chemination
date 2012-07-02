@@ -36,6 +36,13 @@ public class Sandbox {
 		graph.setActive(graph.getNeighbors().get(0));
 		System.out.println(graph.getAtom().atomicNumber);
 		System.out.println(graph.contains(centerAtom));
+		
+		System.out.println();
+		
+		// test graph iteration
+		for (AtomNode n : graph) {
+			System.out.println(n.getAtom().atomicNumber);
+		}
 	}
 	
 }
