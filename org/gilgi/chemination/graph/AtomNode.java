@@ -106,4 +106,34 @@ public class AtomNode implements Node<AtomNode> {
 		return result;
 	}
 	
+	public int getSigmaBonds() {
+		return getUniqueNeighbors().size();
+	}
+	
+	public int getPiBonds() {
+		return getBonds() - getSigmaBonds();
+	}
+	
+	public int getLooseElectrons() {
+		return (getLonePairs() * 2) + getRadicals();
+	}
+
+	public void removeLooseElectron() {
+		if (radicals != 0)
+			radicals--;
+		else {
+			lonePairs--;
+			radicals++;
+		}
+	}
+
+	public void addLooseElectron() {
+		if (radicals != 0) {
+			lonePairs++;
+			radicals--;
+		} else {
+			radicals++;
+		}
+	}
+
 }

@@ -30,7 +30,7 @@ public class MoleculeGraph extends Graph<AtomNode> {
 
 	public boolean validate() {
 		for (AtomNode n : this) {
-			if (n.getUniqueNeighbors().size() > n.getAtom().maxHybridization)
+			if (n.getSigmaBonds() > n.getAtom().maxHybridization)
 				return false;
 		}
 		return true;
