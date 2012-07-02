@@ -18,6 +18,8 @@ public class AtomNode implements Node<AtomNode> {
 		neighbors = new ArrayList<AtomNode>();
 		this.atom = atom;
 		hybridization = 1;
+		lonePairs = atom.valenceElectrons / 2;
+		radicals = atom.valenceElectrons % 2;
 	}
 	
 	public List<AtomNode> getNeighbors() {
@@ -134,6 +136,22 @@ public class AtomNode implements Node<AtomNode> {
 		} else {
 			radicals++;
 		}
+	}
+	
+	public void makeBond(AtomNode n) {
+		// for covalent bond, each atom has to have an electron to contribute
+		if (getLooseElectrons() == 0 || n.getLooseElectrons() == 0) return;
+		// if this is supposed to be sigma, check hybridizations
+		if (!hasNeighbor(n)) {
+			if (getSigmaBonds() + 1 > hybridization) {
+				if (hybridization + 1 > atom.maxHybridization) return;
+				if (n.getSigmaBonds() + 1 > n.hybridization) {
+					if (n.hybridization + 1 > n.atom.maxHybridization) return;
+				}
+			}
+		}
+		// change the hybridizations if necessary
+		addNeighbor(n);
 	}
 
 }
