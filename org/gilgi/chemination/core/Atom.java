@@ -8,16 +8,17 @@ public class Atom {
 	public final int valenceElectrons;
 	public final int group;
 	public final int period;
+	public final int maxHybridization;
 
 	public Atom(int atomicNumber, double electronegativity,
-			double atomicRadius, int valenceElectrons, int group, int period) {
-
+			double atomicRadius, int valenceElectrons, int group, int period, int maxHybridization) {
 		this.atomicNumber = atomicNumber;
 		this.electronegativity = electronegativity;
 		this.atomicRadius = atomicRadius;
 		this.valenceElectrons = valenceElectrons;
 		this.group = group;
 		this.period = period;
+		this.maxHybridization = maxHybridization;
 	}
 
 	public Atom(int atomicNumber, double electronegativity, double atomicRadius) {
@@ -63,6 +64,11 @@ public class Atom {
 		} else {
 			valenceElectrons = group - 10;
 		}
+		
+		// calculate maximum hybridization
+		if (period == 1) maxHybridization = 1;
+		else if (period == 2) maxHybridization = 4;
+		else maxHybridization = 6;
 	}
 
 }

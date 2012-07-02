@@ -1,5 +1,7 @@
 package org.gilgi.chemination;
 
+import org.gilgi.chemination.core.Molecule;
+import org.gilgi.chemination.core.exception.InvalidConnectivityException;
 import org.gilgi.chemination.graph.AtomNode;
 import org.gilgi.chemination.graph.MoleculeGraph;
 import org.gilgi.chemination.util.PeriodicTable;
@@ -42,6 +44,23 @@ public class Sandbox {
 		// test graph iteration
 		for (AtomNode n : graph) {
 			System.out.println(n.getAtom().atomicNumber);
+		}
+		
+		System.out.println();
+		
+		// test molecule
+		try {
+			Molecule m = new Molecule(graph);
+			System.out.println("molecule created");
+		} catch (InvalidConnectivityException e) {
+			System.out.println("molecule failed validation");
+		}
+		graph.addNode(new AtomNode(PeriodicTable.H));
+		try {
+			Molecule m = new Molecule(graph);
+			System.out.println("molecule created");
+		} catch (InvalidConnectivityException e) {
+			System.out.println("molecule failed validation");
 		}
 	}
 	

@@ -92,4 +92,18 @@ public class AtomNode implements Node<AtomNode> {
 		this.hybridization = hybridization;
 	}
 	
+	public int getGeometry() {
+		return 0;
+	}
+	
+	public List<AtomNode> getUniqueNeighbors() {
+		List<AtomNode> result = new ArrayList<AtomNode>();
+		for (AtomNode n : getNeighbors()) {
+			if (!result.contains(n)) {
+				result.add(n);
+			}
+		}
+		return result;
+	}
+	
 }
