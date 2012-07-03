@@ -44,3 +44,7 @@ Thumbs.db
 # npm packages #
 ################
 node_modules
+
+# eclipse metadata #
+####################
+.metadata
