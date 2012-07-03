@@ -151,6 +151,7 @@ public class AtomNode implements Node<AtomNode> {
 			}
 		}
 		// change the hybridizations if necessary
+		//TODO fix this
 		addNeighbor(n);
 	}
 
